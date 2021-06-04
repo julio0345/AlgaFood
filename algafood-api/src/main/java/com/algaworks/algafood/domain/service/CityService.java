@@ -21,7 +21,7 @@ public class CityService {
 	private StateRepository repositoryState;
 	
 	public City get(Long id) { 
-		City city = repository.get(id);
+		City city = repository.findById(id).orElse(null);
 		
 		if(city == null) {
 			throw new EntityNotFoundPersonalException(String.format("City [ %d ] not found", id));
@@ -30,7 +30,7 @@ public class CityService {
 	}
 	
 	public List<City> getAll(){
-		return repository.getAll();
+		return repository.findAll();
 	}
 	
 	public void delete(Long id) {
@@ -40,7 +40,7 @@ public class CityService {
 	
 	public City save(City city) {
 		Long idState = city.getState().getId();
-		State state = repositoryState.get(idState);
+		State state = repositoryState.findById(idState).orElse(null);
 		
 		if(state != null) {
 			city.setState(state);

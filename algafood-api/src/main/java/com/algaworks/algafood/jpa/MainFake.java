@@ -29,7 +29,7 @@ public class MainFake {
 		k1.setName("Portuguesa");
 		kitchenManager.save(k1);
 		
-		List<Kitchen> listKitchen = kitchenManager.getAll();
+		List<Kitchen> listKitchen = kitchenManager.findAll();
 		
 		for(Kitchen item : listKitchen) {
 			System.out.printf("%d - %s \n", item.getId(), item.getName());
@@ -41,12 +41,12 @@ public class MainFake {
 		kitchenManager.save(k1);
 		System.out.printf("%d - %s \n", k1.getId(), k1.getName());
 		
-		k1 = kitchenManager.get(4L);
+		k1 = kitchenManager.findById(4L).get();
 		System.out.printf("%d - %s \n", k1.getId(), k1.getName());
 		
-		kitchenManager.delete(4L);
+		kitchenManager.deleteById(4L);
 		
-		listKitchen = kitchenManager.getAll();
+		listKitchen = kitchenManager.findAll();
 		
 		for(Kitchen item : listKitchen) {
 			System.out.printf("%d - %s \n", item.getId(), item.getName());

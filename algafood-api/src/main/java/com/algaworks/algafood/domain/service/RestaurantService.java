@@ -23,33 +23,27 @@ public class RestaurantService {
 	
 	public Restaurant save(Restaurant restaurant) {		
 		Long idKitchen = restaurant.getKitchen().getId();
-		Kitchen kitchen = repositoryKitchen.get(idKitchen);
-		
-		if(kitchen == null) {
-			throw new EntityNotFoundPersonalException(String.format("Kitchen [ %d ] not found.", idKitchen));
-		}
+		Kitchen kitchen = repositoryKitchen.findById(idKitchen)
+				.orElseThrow( () -> new EntityNotFoundPersonalException(String.format("Kitchen [ %d ] not found.", idKitchen)));
 		
 		restaurant.setKitchen(kitchen);
 		return repository.save(restaurant);
 	}
 
 	public List<Restaurant> getAll() {
-		return repository.getAll();
+		return repository.findAll();
 	}
 	
 	public Restaurant get(Long id){
-		return repository.get(id);
+		return repository.findById(id).orElse(null);
 	}
 	
 	public void delete(Long id) {
 		try {
-			repository.delete(id);
+			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException ex1) {
 			throw new EntityNotFoundPersonalException(
 					String.format("This Restaurant [ %d ] not found", id));
-		}// catch (DataIntegrityViolationException ex) {
-//			throw new EntityInUseException(
-//					String.format("This Restaurant [ %d ] can't be deleted because it is used in a restaurant", id));
-//		}
+		}
 	}
 }

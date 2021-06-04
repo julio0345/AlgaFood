@@ -16,7 +16,7 @@ public class StateService {
 	private StateRepository repository;
 	
 	public State get(Long id) { 
-		State state = repository.get(id);
+		State state = repository.findById(id).get();
 		
 		if(state == null) {
 			throw new EntityNotFoundPersonalException(String.format("State [ %d ] not found", id));
@@ -25,7 +25,7 @@ public class StateService {
 	}
 	
 	public List<State> getAll(){
-		return repository.getAll();
+		return repository.findAll();
 	}
 	
 	public void delete(Long id) {
