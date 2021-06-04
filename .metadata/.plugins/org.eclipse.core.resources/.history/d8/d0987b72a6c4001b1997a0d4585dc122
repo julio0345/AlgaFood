@@ -1,0 +1,38 @@
+package com.algaworks.algafood.api.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.algaworks.algafood.domain.exception.EntityNotFoundPersonalException;
+import com.algaworks.algafood.domain.model.State;
+import com.algaworks.algafood.domain.service.StateService;
+
+@RestController
+@RequestMapping("/states")
+public class StateController {
+
+	@Autowired
+	private StateService service;
+	
+	@GetMapping
+	public List<State> getAll(){
+		return service.getAll();
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<State> get(@PathVariable Long id){
+		try {
+			State state = service.get(id);			
+			return ResponseEntity.ok(state);
+		}
+		catch (EntityNotFoundPersonalException ex) {
+			return ResponseEntity.notFound().build();
+		} 
+	}
+}

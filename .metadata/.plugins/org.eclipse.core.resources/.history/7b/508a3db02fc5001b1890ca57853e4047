@@ -1,0 +1,7 @@
+insert into kitchen (id, name) values(1, 'Japonesa'), (2, 'Tailandesa'), (3, 'Mexicana');
+
+insert into restaurant (name, price_delivery, kitchen_id) values('Skema', 15.0, 1), ('Cheio de Graça',19.30, 2), ('Milhão', 37.77, 3);
+
+insert into state (description) values ('Minas Gerais'), ('Rio de Janeiro'), ('São Paulo'), ('Acre');
+
+insert into city (name, id_state) values ('Divinópolis'.1), ('Copa Cabana',2), ('Olimpia',3), ('Rio Branco', 4);

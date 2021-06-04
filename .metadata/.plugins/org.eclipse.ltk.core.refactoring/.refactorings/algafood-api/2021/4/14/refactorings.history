@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.algaworks.jpa&apos; to &apos;com.algaworks.algafood.jpa&apos;&#x0D;&#x0A;- Original project: &apos;algafood-api&apos;&#x0D;&#x0A;- Original element: &apos;algafood-api/src/main/java/com.algaworks.jpa&apos;&#x0D;&#x0A;- Renamed element: &apos;algafood-api/src/main/java/com.algaworks.algafood.jpa&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.algaworks.jpa&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.algaworks.jpa" name="com.algaworks.algafood.jpa" qualified="false" references="true" stamp="1617237748495" textual="false" version="1.0"/>
+</session>

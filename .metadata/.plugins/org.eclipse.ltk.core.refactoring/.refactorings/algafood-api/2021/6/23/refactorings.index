@@ -1,0 +1,10 @@
+1622722229315	Rename type 'CityRepository'
+1622722266352	Rename type 'StateRepository'
+1622727831070	Copy package
+1622727942214	Delete element
+1622727983769	Rename package 'com.algaworks.domain'
+1622728063836	Rename package 'com.algaworks.domain.model'
+1622728079135	Rename package 'com.algaworks.domain.repository'
+1622728095636	Rename package 'com.algaworks.domain.service'
+1622737551257	Copy compilation unit
+1622814010005	Rename local variable 'restaurantTo'
