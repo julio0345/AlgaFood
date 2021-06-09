@@ -16,39 +16,35 @@ public class CityService {
 
 	@Autowired
 	private CityRepository repository;
-	
+
 	@Autowired
 	private StateRepository repositoryState;
-	
-	public City get(Long id) { 
+
+	public City get(Long id) {
 		City city = repository.findById(id).orElse(null);
-		
-		if(city == null) {
+
+		if (city == null) {
 			throw new EntityNotFoundPersonalException(String.format("City [ %d ] not found", id));
 		}
 		return city;
 	}
-	
-	public List<City> getAll(){
+
+	public List<City> getAll() {
 		return repository.findAll();
 	}
-	
+
 	public void delete(Long id) {
 		City city = get(id);
 		repository.delete(city);
 	}
-	
+
 	public City save(City city) {
 		Long idState = city.getState().getId();
-		State state = repositoryState.findById(idState).orElse(null);
-		
-		if(state != null) {
-			city.setState(state);
-			city = repository.save(city);
-		}
-		else {
-			throw new EntityNotFoundPersonalException(String.format("State id [ %d ] not found", idState));
-		}
+		State state = repositoryState.findById(idState).orElseThrow(
+				() -> new EntityNotFoundPersonalException(String.format("Not exists the State [%d ]", idState)));
+
+		city.setState(state);
+		city = repository.save(city);
 		return city;
 	}
 }
