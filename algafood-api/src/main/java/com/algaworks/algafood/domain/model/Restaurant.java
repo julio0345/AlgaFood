@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -46,4 +47,8 @@ public class Restaurant {
 			   joinColumns = @JoinColumn(name = "restaurant_id"),
 			   inverseJoinColumns = @JoinColumn(name = "payment_form_id"))
 	private List<PaymentForm> listPaymentForm = new ArrayList<PaymentForm>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "restaurant")
+	List<Product> listProduct = new ArrayList<Product>();
 }
